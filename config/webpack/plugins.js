@@ -1,7 +1,7 @@
-var HtmlWebpackPlugin = require('html-webpack-plugin'),
+const HtmlWebpackPlugin = require('html-webpack-plugin'),
     webpack = require('webpack');
 
-var Plugins = [
+const Plugins = [
   new HtmlWebpackPlugin({
     template: './src/index.html'
   }),
@@ -15,12 +15,10 @@ var Plugins = [
   })
 ];
 
-if (process.env.NODE_ENV == 'production') {
+if (process.env.NODE_ENV == 'prod') {
   Plugins.push(
       new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          warnings: false
-        }
+        compress: {warnings: false}
       })
   )
 }

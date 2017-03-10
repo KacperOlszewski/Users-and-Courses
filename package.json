@@ -4,7 +4,7 @@
   "scripts": {
     "clean": "if test -d dist/; then rm -r dist; fi",
     "build": "webpack --progress",
-    "build:prod": "webpack -p --progress",
+    "build:prod": "NODE_ENV='prod' webpack -p --progress",
     "serve": "webpack-dev-server --inline",
     "test": "karma start karma.conf.js"
   },
