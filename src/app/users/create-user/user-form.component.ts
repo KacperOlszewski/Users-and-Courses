@@ -1,6 +1,6 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import {Component, Inject, ViewContainerRef} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MdlDialogReference } from 'angular2-mdl';
+import { MdlDialogReference, IMdlCustomDialog } from 'angular2-mdl';
 
 import { UsersService } from '../users.service';
 import { UserInterface } from '../users.interface';
@@ -9,10 +9,8 @@ import { UserInterface } from '../users.interface';
     selector: 'psp-user-form',
     templateUrl: './user-form.component.html',
 })
-export class UserFormComponent implements OnChanges {
+export class UserFormComponent implements IMdlCustomDialog {
 
-    @Input() public userToEdit: UserInterface;
-    @Input() private dialog: any;
     public userForm: FormGroup;
     public isPending: boolean;
 
@@ -25,15 +23,16 @@ export class UserFormComponent implements OnChanges {
 
     constructor(
         private userService: UsersService,
-        private formBuilder: FormBuilder
+        private formBuilder: FormBuilder,
+        private dialog: MdlDialogReference,
+        private vcRef: ViewContainerRef,
+        @Inject('UserToEdit') private userToEdit: UserInterface
     ) {
-        this.setFormValidation();
+        this.setFormValidation(this.userToEdit);
     }
 
-    ngOnChanges() {
-        console.log(this.dialog);
-        this.dialog.show();
-        this.setFormValidation(this.userToEdit);
+    get viewContainerRef() {
+        return this.vcRef;
     }
 
     submitChanges() {
@@ -52,7 +51,7 @@ export class UserFormComponent implements OnChanges {
         )
         .add(() => {
             this.isPending = false;
-            this.dialog.close();
+            this.dialog.hide();
         });
     }
 

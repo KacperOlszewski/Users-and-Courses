@@ -21,6 +21,7 @@
                     mdl-ripple>
                 Edit
             </button>
+
             <button mdl-button mdl-button-type="raised" mdl-colored="primary" mdl-ripple>
                 Add to course
             </button>
@@ -28,20 +29,9 @@
     </mdl-list-item>
 </mdl-list>
 
-<button #editUserButton mdl-button mdl-button-type="raised" mdl-colored="primary"
-        mdl-ripple (click)="editUserDialog.show()">Create User</button>
-
-<mdl-dialog #editUserDialog
-            [mdl-dialog-config]="{
-              clickOutsideToClose: true,
-              styles:{'width': '500px'},
-              isModal:true,
-              openFrom: MouseEvent,
-              enterTransitionDuration: 400,
-              leaveTransitionDuration: 400}">
-    <psp-user-form [userToEdit]="userToEdit" [dialog]="editUserDialog"></psp-user-form>
-    <div class="mdl-dialog__actions">
-        <button mdl-button  mdl-button-type="raised" mdl-colored="primary" mdl-ripple>Save</button>
-        <button mdl-button (click)="editUserDialog.close()" mdl-ripple>Cancel</button>
-    </div>
-</mdl-dialog>
+<button mdl-button
+        mdl-button-type="raised"
+        mdl-colored="primary"
+        mdl-ripple (click)="createUser()">
+    Create User
+</button>
