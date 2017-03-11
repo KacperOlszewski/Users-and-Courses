@@ -1,0 +1,65 @@
+<form [formGroup]="userForm">
+    <section>
+        <p class="form-control-wrapper">
+            <mdl-textfield
+                    formControlName="first_name"
+                    type="text"
+                    label="First name"
+                    floating-label
+                    disableNativeValidityChecking
+                    [class.is-invalid]="detectTouchedAndInvalid('first_name')"
+                    error-msg="{{detectTouchedAndInvalid ? errorMessage : ''}}">
+            </mdl-textfield>
+
+            <mdl-icon *ngIf="detectTouchedAndValid('first_name')" class="icon-small icon-success form-control-right-icon">check_circle</mdl-icon>
+            <mdl-icon *ngIf="detectTouchedAndInvalid('first_name')" class="icon-small icon-error form-control-right-icon">warning</mdl-icon>
+        </p>
+
+        <p class="form-control-wrapper">
+            <mdl-textfield
+                    formControlName="last_name"
+                    type="text"
+                    label="Last name"
+                    floating-label
+                    disableNativeValidityChecking
+                    [class.is-invalid]="detectTouchedAndInvalid('last_name')"
+                    error-msg="{{detectTouchedAndInvalid ? errorMessage : ''}}">
+            </mdl-textfield>
+
+            <mdl-icon *ngIf="detectTouchedAndValid('last_name')" class="icon-small icon-success form-control-right-icon">check_circle</mdl-icon>
+            <mdl-icon *ngIf="detectTouchedAndInvalid('last_name')" class="icon-small icon-error form-control-right-icon">warning</mdl-icon>
+        </p>
+
+        <p class="form-control-wrapper">
+            <mdl-radio
+                    value="{{userGender.male}}"
+                    formControlName="gender"
+                    name="gender"
+                    class="form-control-radio"
+                    mdl-ripple>
+                Male
+            </mdl-radio>
+            <mdl-radio
+                    value="{{userGender.female}}"
+                    formControlName="gender"
+                    name="gender"
+                    class="form-control-radio"
+                    mdl-ripple>
+                Female
+            </mdl-radio>
+        </p>
+    </section>
+    <section>
+        <div class="buttons">
+            <button
+                mdl-button mdl-button-type="raised"
+                mdl-colored="primary"
+                (click)="submitChanges()"
+                [disabled]="!userForm.valid || isPending">
+                <span>
+                    Save
+                </span>
+            </button>
+        </div>
+    </section>
+</form>

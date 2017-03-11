@@ -7,6 +7,7 @@ import { UsersRoutingModule } from './users.routes'
 import { UsersComponent } from './users.component';
 import { UsersService } from './users.service';
 import { PipesModule } from '../shared/pipes/pipes.module';
+import { UserFormModule } from './create-user/user-form.module';
 
 @NgModule({
     imports: [
@@ -14,6 +15,7 @@ import { PipesModule } from '../shared/pipes/pipes.module';
         HttpModule,
         MdlModule,
         UsersRoutingModule,
+        UserFormModule,
         PipesModule
     ],
     declarations: [

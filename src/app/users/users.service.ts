@@ -22,4 +22,11 @@ export class UsersService {
             .catch(handleHttpError)
             .map(response => response.users);
     }
+
+    public createUser(postData: UserInterface) {
+        return this.http.post(this.getUserEndpoint, postData)
+            .flatMap(toJson)
+            .flatMap(toData)
+            .catch(handleHttpError);
+    }
 }
