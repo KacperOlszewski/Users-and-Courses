@@ -3,7 +3,9 @@ import { UsersComponent } from '../users.component';
 describe('TEST', () => {
 
     beforeEach(() => {
-        this.usersComponentInstance = new UsersComponent();
+        this.httpMock = {};
+
+        this.usersComponentInstance = new UsersComponent(this.httpMock);
     });
 
     describe('User Component', () => {
