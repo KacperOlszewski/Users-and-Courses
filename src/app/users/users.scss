@@ -1,5 +1,7 @@
-.users {
-  h2 {
-    color: blueviolet;
+.mdl-list__item .mdl-list__item-secondary-content {
+  flex-flow: row;
+
+  .mdl-button {
+    margin-left: 10px
   }
 }

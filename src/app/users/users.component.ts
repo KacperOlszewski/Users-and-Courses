@@ -10,19 +10,24 @@ import { UserInterface } from './users.interface';
 export class UsersComponent implements OnInit {
 
     public users: UserInterface[];
+    public isPending = true;
 
     constructor(
         private userService: UsersService
     ) {}
 
     ngOnInit() {
-        this.userService.getUsers().subscribe(
-            u => {
-                this.users = u;
-            },
-            (err) => {
-                console.log(err)
-            }
-        )
+        this.userService.getUsers()
+            .subscribe(
+                u => {
+                    this.users = u;
+                },
+                (err) => {
+                    console.log(err)
+                }
+            )
+            .add(() => {
+                this.isPending = false;
+            });
     }
 }
