@@ -5,6 +5,7 @@ import { MdlModule } from 'angular2-mdl';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routes';
+import { NavigationComponent } from './shared/layout/navigation/navigation.component';
 
 @NgModule({
     imports: [
@@ -14,6 +15,7 @@ import { AppRoutingModule } from './app.routes';
         AppRoutingModule
     ],
     declarations: [
+        NavigationComponent,
         AppComponent
     ],
     bootstrap: [ AppComponent ]

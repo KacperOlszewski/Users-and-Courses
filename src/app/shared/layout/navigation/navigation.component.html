@@ -1,0 +1,10 @@
+<nav class="mdl-navigation psp-navigation">
+    <a *ngFor="let link of routes"
+       class="mdl-navigation__link"
+       routerLink="{{link.path}}"
+       routerLinkActive="active">
+        <span  mdl-ripple>
+            {{link.path}}
+        </span>
+    </a>
+</nav>
