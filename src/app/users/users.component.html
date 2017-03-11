@@ -14,7 +14,7 @@
             </mdl-list-item-sub-title>
         </mdl-list-item-primary-content>
         <mdl-list-item-secondary-content>
-            <button (click)="editUser(user)"
+            <button (click)="editUser($event, user)"
                     mdl-button
                     mdl-button-type="raised"
                     mdl-colored="primary"
@@ -32,6 +32,6 @@
 <button mdl-button
         mdl-button-type="raised"
         mdl-colored="primary"
-        mdl-ripple (click)="createUser()">
+        mdl-ripple (click)="createUser($event)">
     Create User
 </button>

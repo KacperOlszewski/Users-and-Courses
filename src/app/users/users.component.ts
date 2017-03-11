@@ -21,9 +21,7 @@ export class UsersComponent implements OnInit {
     constructor(
         private userService: UsersService,
         private dialogService: MdlDialogService
-    ) {
-
-    }
+    ) {}
 
     ngOnInit() {
         this.userService.getUsers()
@@ -40,15 +38,15 @@ export class UsersComponent implements OnInit {
             });
     }
 
-    editUser(user: UserInterface) {
-        this.showFormDialog(user);
+    editUser($event: MouseEvent, user: UserInterface) {
+        this.showFormDialog($event, user);
     }
 
-    createUser() {
-        this.showFormDialog();
+    createUser($event: MouseEvent) {
+        this.showFormDialog($event);
     }
 
-    private showFormDialog(providedUser?: UserInterface) {
+    private showFormDialog($event: MouseEvent, providedUser?: UserInterface) {
         this.dialogService.showCustomDialog({
             component: UserFormComponent,
             providers: [
@@ -56,6 +54,7 @@ export class UsersComponent implements OnInit {
                 FormBuilder,
                 {provide: 'UserToEdit', useValue: providedUser}
             ],
+            openFrom: $event,
             isModal: true,
             styles: {'width': '350px'},
             clickOutsideToClose: true,
