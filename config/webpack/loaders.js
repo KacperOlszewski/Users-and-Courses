@@ -5,14 +5,9 @@ module.exports = [
     loaders: ['awesome-typescript-loader', 'angular2-template-loader', 'angular2-router-loader']
   },
   {
-    test: /\.css$/,
-    loader: 'style!css'
-  },
-  {
     test: /\.scss/,
-    loader: 'style!css!sass'
+    loader: 'raw!sass'
   },
-
   {
     test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot|woff(4)?)(\?[a-z0-9]+)?$/,
     loader: 'file?name=bundles/[hash].[ext]'

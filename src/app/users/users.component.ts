@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService, UserInterface } from './users.service';
+import { UsersService } from './users.service';
+import { UserInterface } from './users.interface';
 
 @Component({
     selector: 'psp-users',
     templateUrl: './users.component.html',
+    styleUrls: ['./users.scss']
 })
 export class UsersComponent implements OnInit {
 

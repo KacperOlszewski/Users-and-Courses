@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { Observable } from "rxjs";
+import { Observable } from 'rxjs';
 
 import { toJson, handleHttpError, toData } from '../shared/utils/http.helpers';
+import { UserInterface } from './users.interface';
 
 @Injectable()
 export class UsersService {
 
     private getUserEndpoint = 'https://private-anon-7e9fab5329-coursemgmt.apiary-mock.com/users';
+    private createUserEndpoint = 'https://private-anon-7e9fab5329-coursemgmt.apiary-mock.com/users';
 
     constructor(
         private http: Http
@@ -20,11 +22,4 @@ export class UsersService {
             .catch(handleHttpError)
             .map(response => response.users);
     }
-}
-
-export interface UserInterface {
-    id: number;
-    gender: string;
-    first_name: string;
-    last_name: string
 }
