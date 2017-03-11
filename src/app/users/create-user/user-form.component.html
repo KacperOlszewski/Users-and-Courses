@@ -55,7 +55,7 @@
                 mdl-button mdl-button-type="raised"
                 mdl-colored="primary"
                 (click)="submitChanges()"
-                [disabled]="!userForm.valid || isPending">
+                [disabled]="!userForm.valid || !userForm.dirty || isPending">
                 <span>
                     Save
                 </span>

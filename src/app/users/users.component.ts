@@ -11,6 +11,7 @@ export class UsersComponent implements OnInit {
 
     public users: UserInterface[];
     public isPending = true;
+    public userToEdit: UserInterface;
 
     constructor(
         private userService: UsersService
@@ -29,5 +30,9 @@ export class UsersComponent implements OnInit {
             .add(() => {
                 this.isPending = false;
             });
+    }
+
+    editUser(user: UserInterface) {
+        this.userToEdit = user;
     }
 }

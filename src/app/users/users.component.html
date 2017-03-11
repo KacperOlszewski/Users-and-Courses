@@ -6,14 +6,21 @@
     <mdl-list-item *ngFor="let user of users" lines="2">
         <mdl-list-item-primary-content>
             <mdl-icon mdl-list-item-avatar>person</mdl-icon>
-            <span>{{user.first_name}} {{user.last_name}}</span>
-            <mdl-list-item-sub-title>{{user.gender | gender}}</mdl-list-item-sub-title>
+            <span>
+                {{user.first_name}} {{user.last_name}}
+            </span>
+            <mdl-list-item-sub-title>
+                {{user.gender | gender}}
+            </mdl-list-item-sub-title>
         </mdl-list-item-primary-content>
         <mdl-list-item-secondary-content>
-            <button mdl-button mdl-button-type="raised" mdl-colored="primary" mdl-ripple>
+            <button (click)="editUser(user)"
+                    mdl-button
+                    mdl-button-type="raised"
+                    mdl-colored="primary"
+                    mdl-ripple>
                 Edit
             </button>
-
             <button mdl-button mdl-button-type="raised" mdl-colored="primary" mdl-ripple>
                 Add to course
             </button>
@@ -21,4 +28,20 @@
     </mdl-list-item>
 </mdl-list>
 
-<psp-user-form></psp-user-form>
+<button #editUserButton mdl-button mdl-button-type="raised" mdl-colored="primary"
+        mdl-ripple (click)="editUserDialog.show()">Create User</button>
+
+<mdl-dialog #editUserDialog
+            [mdl-dialog-config]="{
+              clickOutsideToClose: true,
+              styles:{'width': '500px'},
+              isModal:true,
+              openFrom: MouseEvent,
+              enterTransitionDuration: 400,
+              leaveTransitionDuration: 400}">
+    <psp-user-form [userToEdit]="userToEdit" [dialog]="editUserDialog"></psp-user-form>
+    <div class="mdl-dialog__actions">
+        <button mdl-button  mdl-button-type="raised" mdl-colored="primary" mdl-ripple>Save</button>
+        <button mdl-button (click)="editUserDialog.close()" mdl-ripple>Cancel</button>
+    </div>
+</mdl-dialog>
