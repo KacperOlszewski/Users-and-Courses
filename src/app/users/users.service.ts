@@ -8,15 +8,14 @@ import { UserInterface } from './users.interface';
 @Injectable()
 export class UsersService {
 
-    private getUserEndpoint = 'https://private-anon-7e9fab5329-coursemgmt.apiary-mock.com/users';
-    private createUserEndpoint = 'https://private-anon-7e9fab5329-coursemgmt.apiary-mock.com/users';
+    private usersEndpoint = 'https://private-anon-7e9fab5329-coursemgmt.apiary-mock.com/users';
 
     constructor(
         private http: Http
     ) {}
 
     public getUsers(): Observable<UserInterface[]> {
-        return this.http.get(this.getUserEndpoint)
+        return this.http.get(this.usersEndpoint)
             .flatMap(toJson)
             .flatMap(toData)
             .catch(handleHttpError)
@@ -24,7 +23,16 @@ export class UsersService {
     }
 
     public createUser(postData: UserInterface) {
-        return this.http.post(this.getUserEndpoint, postData)
+        return this.http.post(this.usersEndpoint, postData)
+            .flatMap(toJson)
+            .flatMap(toData)
+            .catch(handleHttpError);
+    }
+
+    public updateUser(postData: UserInterface) {
+        console.log(this.usersEndpoint +'/'+ postData.id);
+
+        return this.http.put(this.usersEndpoint +'/'+ postData.id, postData)
             .flatMap(toJson)
             .flatMap(toData)
             .catch(handleHttpError);

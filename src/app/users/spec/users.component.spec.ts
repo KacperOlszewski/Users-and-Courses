@@ -4,8 +4,9 @@ describe('TEST', () => {
 
     beforeEach(() => {
         this.httpMock = {};
+        this.formBuldier = {};
 
-        this.usersComponentInstance = new UsersComponent(this.httpMock);
+        this.usersComponentInstance = new UsersComponent(this.httpMock, this.formBuldier);
     });
 
     describe('User Component', () => {
