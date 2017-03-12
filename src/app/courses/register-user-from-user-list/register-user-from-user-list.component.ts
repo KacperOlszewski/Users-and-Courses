@@ -13,6 +13,7 @@ import {UserInterface} from "../../users/users.interface";
 export class RegisterUserFromUserList implements OnInit {
 
     public isPending = true;
+    public notification: string;
     public users: UserInterface[];
 
     constructor(
@@ -29,7 +30,7 @@ export class RegisterUserFromUserList implements OnInit {
                     this.users = users;
                 },
                 (err) => {
-                    console.log(err)
+                    this.notification = err.status;
                 }
             )
             .add(() => {
@@ -39,11 +40,15 @@ export class RegisterUserFromUserList implements OnInit {
 
     addUserToCourse(userId: number) {
         this.isPending = true;
+        delete this.notification;
+
         this.coursesService.registerToCourse(this.course.id, userId).subscribe(
             () => {
-
+                this.notification = 'success';
             },
-            (err: any) => {}
+            (err: any) => {
+                this.notification = err.status
+            }
         )
             .add(() => {
                 this.isPending = false;

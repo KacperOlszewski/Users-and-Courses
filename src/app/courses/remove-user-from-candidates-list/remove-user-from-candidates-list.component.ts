@@ -3,6 +3,7 @@ import { MdlDialogReference } from 'angular2-mdl';
 
 import { CoursesService } from '../courses.service';
 import { CourseInterface } from "../courses.interface";
+import {HttpJsonResponse} from "../../shared/utils/http.helpers";
 
 @Component({
     selector: 'psp-remove-user',
@@ -10,7 +11,8 @@ import { CourseInterface } from "../courses.interface";
 })
 export class RemoveUserFromCandidatesList {
 
-    public isPending: boolean;
+    public isPending = false;
+    public notification: string;
 
     constructor(
         private coursesService: CoursesService,
@@ -20,11 +22,15 @@ export class RemoveUserFromCandidatesList {
 
     removeFromCourse(userId: number) {
         this.isPending = true;
+        delete this.notification;
+
         this.coursesService.removeFromCourse(this.course.id, userId).subscribe(
             () => {
-
+                this.notification = 'success';
             },
-            (err: any) => {}
+            (err: HttpJsonResponse) => {
+                this.notification = err.status;
+            }
         )
         .add(() => {
             this.isPending = false;

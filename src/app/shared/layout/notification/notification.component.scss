@@ -1,0 +1,9 @@
+p {
+  display: inline-block;
+  margin: 0 12px;
+  color: red;
+
+  &.success {
+    color: forestgreen;
+  }
+}

@@ -1,4 +1,4 @@
-<h3 class="mdl-dialog__title">Remove candidates from course</h3>
+<h3 class="mdl-dialog__title">Remove candidates from course <mdl-spinner single-color active="{{isPending}}"></mdl-spinner></h3>
 <div class="mdl-dialog__content">
     <mdl-list>
         <mdl-list-item *ngFor="let candidate of course.candidates" lines="1">
@@ -21,7 +21,7 @@
         </mdl-list-item>
     </mdl-list>
 </div>
-<div class="mdl-dialog__actions">
+<div class="buttons">
     <button
             mdl-button
             mdl-button-type="raised"
@@ -30,4 +30,5 @@
             mdl-ripple>
         Done
     </button>
+    <psp-notification [notification]="notification"></psp-notification>
 </div>

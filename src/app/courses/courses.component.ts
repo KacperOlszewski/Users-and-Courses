@@ -28,7 +28,7 @@ export class CoursesComponent {
                     this.courses = courses;
                 },
                 (err) => {
-                    console.log(err)
+                    console.warn(err)
                 }
             )
             .add(() => {

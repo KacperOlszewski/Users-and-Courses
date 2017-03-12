@@ -9,6 +9,7 @@ import { UsersComponent } from './users.component';
 import { UsersService } from './users.service';
 import { PipesModule } from '../shared/pipes/pipes.module';
 import { UserFormComponent } from './create-user/user-form.component';
+import {NotificationModule} from "../shared/layout/notification/notification.module";
 
 @NgModule({
     imports: [
@@ -17,7 +18,8 @@ import { UserFormComponent } from './create-user/user-form.component';
         MdlModule,
         UsersRoutingModule,
         PipesModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        NotificationModule
     ],
     declarations: [
         UsersComponent,

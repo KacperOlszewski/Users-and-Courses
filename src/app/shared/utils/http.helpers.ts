@@ -1,13 +1,13 @@
 import { Response } from '@angular/http';
 import { Observable } from 'rxjs';
 
-class HttpStatusGroup {
+export class HttpStatusGroup {
     static readonly SUCCESS = 'success';
     static readonly ERROR = 'error';
 }
 
 export interface HttpJsonResponse {
-    status: HttpStatusGroup;
+    status: string;
     data: any;
 }
 

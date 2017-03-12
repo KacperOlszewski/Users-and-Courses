@@ -53,7 +53,7 @@ export class UsersComponent implements OnInit {
             ],
             openFrom: $event,
             isModal: true,
-            styles: {'width': '350px'},
+            styles: {'width': '400px'},
             clickOutsideToClose: true,
             enterTransitionDuration: 400,
             leaveTransitionDuration: 400
