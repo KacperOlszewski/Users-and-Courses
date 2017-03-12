@@ -1,1 +1,48 @@
-<h2>{{title}}</h2>
+<h2>
+    Courses <mdl-spinner single-color active="{{isPending}}"></mdl-spinner>
+</h2>
+
+<mdl-list>
+    <mdl-list-item *ngFor="let course of courses" lines="2">
+
+        <mdl-list-item-primary-content>
+            <section>
+                <mdl-icon mdl-list-item-avatar>videocam</mdl-icon>
+                <span>
+                {{course.title}}
+            </span>
+                <mdl-list-item-sub-title>
+                    <p>Begin: {{course.begin | date}}, End: {{course.end | date}}</p>
+                </mdl-list-item-sub-title>
+            </section>
+        </mdl-list-item-primary-content>
+
+        <mdl-list-item-secondary-content>
+
+            <button *ngIf="hasCandidates(course.candidates)"
+                    mdl-button
+                    mdl-button-type="raised"
+                    mdl-colored="accent"
+                    mdl-ripple
+                    (click)="showCandidatesToRemove($event, course)">
+                <mdl-icon small-icon>remove</mdl-icon> remove candidates
+            </button>
+
+            <button mdl-button
+                    mdl-button-type="raised"
+                    mdl-colored="primary"
+                    mdl-ripple
+                    (click)="showCandidatesToAdd($event, course)">
+                <mdl-icon small-icon>add</mdl-icon> add candidates
+            </button>
+
+        </mdl-list-item-secondary-content>
+    </mdl-list-item>
+</mdl-list>
+
+<button mdl-button
+        mdl-button-type="raised"
+        mdl-colored="primary"
+        mdl-ripple>
+    Create Course
+</button>

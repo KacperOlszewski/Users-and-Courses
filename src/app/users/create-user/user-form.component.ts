@@ -4,6 +4,7 @@ import { MdlDialogReference, IMdlCustomDialog } from 'angular2-mdl';
 
 import { UsersService } from '../users.service';
 import { UserInterface } from '../users.interface';
+import {HttpJsonResponse} from "../../shared/utils/http.helpers";
 
 @Component({
     selector: 'psp-user-form',
@@ -12,10 +13,10 @@ import { UserInterface } from '../users.interface';
 export class UserFormComponent implements IMdlCustomDialog {
 
     public userForm: FormGroup;
-    public isPending: boolean;
+    public isPending = false;
 
-    public errorMessage = 'this field is required!';
-    public successMessage = 'this field is required!';
+    public requiredErrorMessage = 'this field is required!';
+    public notification: string;
     public userGender = {
         male: 'm',
         female: 'f'
@@ -47,11 +48,10 @@ export class UserFormComponent implements IMdlCustomDialog {
 
         userServiceCall.subscribe(
             () => this.successHandler(),
-            (err: any) => this.errorHandler(err.errors)
+            (err: HttpJsonResponse) => this.errorHandler(err)
         )
         .add(() => {
             this.isPending = false;
-            this.dialog.hide();
         });
     }
 
@@ -80,10 +80,14 @@ export class UserFormComponent implements IMdlCustomDialog {
     }
 
     private successHandler() {
+        this.notification = 'success';
         this.userForm.reset();
+        setTimeout(() => {
+            this.dialog.hide();
+        }, 2000);
     }
 
-    private errorHandler(error: string[] = []) {
-
+    private errorHandler(error: HttpJsonResponse) {
+        this.notification = error.status;
     }
 }

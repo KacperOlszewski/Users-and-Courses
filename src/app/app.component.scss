@@ -7,3 +7,23 @@ $color-primary-contrast: $color-dark-contrast;
 $color-accent-contrast: $color-dark-contrast;
 
 @import '~angular2-mdl/scss/material-design-lite';
+
+.mdl-list__item .mdl-list__item-secondary-content {
+  flex-flow: row;
+
+  .mdl-button {
+    margin-left: 10px;
+
+    .material-icons {
+      margin-top: -3px;
+    }
+  }
+}
+
+.icon-success {
+  color: rgb(33,150,243);
+}
+
+.icon-error {
+  color: red;
+}

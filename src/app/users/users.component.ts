@@ -8,9 +8,6 @@ import { FormBuilder } from '@angular/forms';
 @Component({
     selector: 'psp-users',
     templateUrl: './users.component.html',
-    entryComponents: [
-        UserFormComponent
-    ],
     styleUrls: ['./users.scss']
 })
 export class UsersComponent implements OnInit {
@@ -56,7 +53,7 @@ export class UsersComponent implements OnInit {
             ],
             openFrom: $event,
             isModal: true,
-            styles: {'width': '350px'},
+            styles: {'width': '400px'},
             clickOutsideToClose: true,
             enterTransitionDuration: 400,
             leaveTransitionDuration: 400
