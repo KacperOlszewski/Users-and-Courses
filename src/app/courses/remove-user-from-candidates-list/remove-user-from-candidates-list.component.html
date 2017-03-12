@@ -1,0 +1,34 @@
+<h3 class="mdl-dialog__title">Course Candidates</h3>
+<div class="mdl-dialog__content">
+    <mdl-list>
+        <mdl-list-item *ngFor="let candidate of course.candidates" lines="1">
+            <mdl-list-item-primary-content>
+                <mdl-icon mdl-list-item-avatar>person</mdl-icon>
+                <span>
+                    {{candidate.first_name}} {{candidate.last_name}}
+                </span>
+            </mdl-list-item-primary-content>
+            <mdl-list-item-secondary-content>
+                <button mdl-button
+                        mdl-button-type="raised"
+                        mdl-colored="primary"
+                        mdl-ripple
+                        [disabled]="isPending"
+                        (click)="removeFromCourse(candidate.id)">
+                    <mdl-icon small-icon>remove</mdl-icon>
+                    Remove
+                </button>
+            </mdl-list-item-secondary-content>
+        </mdl-list-item>
+    </mdl-list>
+</div>
+<div class="mdl-dialog__actions">
+    <button
+            mdl-button
+            mdl-button-type="raised"
+            mdl-colored="primary"
+            (click)="closeDialog()"
+            mdl-ripple>
+        Done
+    </button>
+</div>

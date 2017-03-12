@@ -8,9 +8,6 @@ import { FormBuilder } from '@angular/forms';
 @Component({
     selector: 'psp-users',
     templateUrl: './users.component.html',
-    entryComponents: [
-        UserFormComponent
-    ],
     styleUrls: ['./users.scss']
 })
 export class UsersComponent implements OnInit {
