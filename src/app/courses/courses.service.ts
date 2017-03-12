@@ -39,4 +39,14 @@ export class CoursesService {
             .flatMap(toData)
             .catch(handleHttpError);
     }
+
+    public registerToCourse(courseId: string, userId: number) {
+        const endpoint = this.coursesRegisterEndpoint.replace('{courseId}', courseId);
+        const userToAdd = {user_id: userId};
+
+        return this.http.post(endpoint, userToAdd)
+            .flatMap(toJson)
+            .flatMap(toData)
+            .catch(handleHttpError);
+    }
 }

@@ -1,4 +1,4 @@
-<h3 class="mdl-dialog__title">Course Candidates</h3>
+<h3 class="mdl-dialog__title">Remove candidates from course</h3>
 <div class="mdl-dialog__content">
     <mdl-list>
         <mdl-list-item *ngFor="let candidate of course.candidates" lines="1">
@@ -11,12 +11,11 @@
             <mdl-list-item-secondary-content>
                 <button mdl-button
                         mdl-button-type="raised"
-                        mdl-colored="primary"
+                        mdl-colored="accent"
                         mdl-ripple
                         [disabled]="isPending"
                         (click)="removeFromCourse(candidate.id)">
-                    <mdl-icon small-icon>remove</mdl-icon>
-                    Remove
+                    <mdl-icon small-icon>remove</mdl-icon> remove
                 </button>
             </mdl-list-item-secondary-content>
         </mdl-list-item>

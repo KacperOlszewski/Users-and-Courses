@@ -4,6 +4,8 @@ import { CourseInterface } from './courses.interface';
 import { UserInterface } from "../users/users.interface";
 import { MdlDialogService } from 'angular2-mdl';
 import { RemoveUserFromCandidatesList } from "./remove-user-from-candidates-list/remove-user-from-candidates-list.component";
+import { RegisterUserFromUserList } from "./register-user-from-user-list/register-user-from-user-list.component";
+import {UsersService} from "../users/users.service";
 
 @Component({
     selector: 'psp-courses',
@@ -38,11 +40,28 @@ export class CoursesComponent {
         return users.length > 0;
     }
 
-    showCandidatesList($event: MouseEvent, course: CourseInterface) {
+    showCandidatesToRemove($event: MouseEvent, course: CourseInterface) {
         this.dialogService.showCustomDialog({
             component: RemoveUserFromCandidatesList,
             providers: [
                 CoursesService,
+                {provide: 'Course', useValue: course}
+            ],
+            openFrom: $event,
+            isModal: true,
+            styles: {'width': '500px'},
+            clickOutsideToClose: true,
+            enterTransitionDuration: 400,
+            leaveTransitionDuration: 400
+        });
+    }
+
+    showCandidatesToAdd($event: MouseEvent, course: CourseInterface) {
+        this.dialogService.showCustomDialog({
+            component: RegisterUserFromUserList,
+            providers: [
+                CoursesService,
+                UsersService,
                 {provide: 'Course', useValue: course}
             ],
             openFrom: $event,
