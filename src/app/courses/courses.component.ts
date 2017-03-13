@@ -7,6 +7,8 @@ import { RemoveUserFromCandidatesList } from "./remove-user-from-candidates-list
 import { RegisterUserFromUserList } from "./register-user-from-user-list/register-user-from-user-list.component";
 import {UsersService} from "../users/users.service";
 
+type DialogType = 'add' | 'remove';
+
 @Component({
     selector: 'psp-courses',
     templateUrl: './courses.component.html'
@@ -41,29 +43,35 @@ export class CoursesComponent {
     }
 
     showCandidatesToRemove($event: MouseEvent, course: CourseInterface) {
-        this.dialogService.showCustomDialog({
-            component: RemoveUserFromCandidatesList,
-            providers: [
-                CoursesService,
-                {provide: 'Course', useValue: course}
-            ],
-            openFrom: $event,
-            isModal: true,
-            styles: {'width': '500px'},
-            clickOutsideToClose: true,
-            enterTransitionDuration: 400,
-            leaveTransitionDuration: 400
-        });
+        this.customizeDialog('remove', $event, course);
     }
 
     showCandidatesToAdd($event: MouseEvent, course: CourseInterface) {
+        this.customizeDialog('add', $event, course);
+    }
+
+    private customizeDialog(dialogType: DialogType, $event: MouseEvent, course: CourseInterface) {
+        const options = {
+            add: {
+                component: RegisterUserFromUserList,
+                providers: [
+                    CoursesService,
+                    UsersService,
+                    {provide: 'Course', useValue: course}
+                ]
+            },
+            remove: {
+                component: RemoveUserFromCandidatesList,
+                providers: [
+                    CoursesService,
+                    {provide: 'Course', useValue: course}
+                ]
+            }
+        };
+
         this.dialogService.showCustomDialog({
-            component: RegisterUserFromUserList,
-            providers: [
-                CoursesService,
-                UsersService,
-                {provide: 'Course', useValue: course}
-            ],
+            component: options[dialogType].component,
+            providers: options[dialogType].providers,
             openFrom: $event,
             isModal: true,
             styles: {'width': '500px'},

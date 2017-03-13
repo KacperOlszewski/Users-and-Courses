@@ -84,7 +84,7 @@ export class UserFormComponent implements IMdlCustomDialog {
         this.userForm.reset();
         setTimeout(() => {
             this.dialog.hide();
-        }, 2000);
+        }, 1500);
     }
 
     private errorHandler(error: HttpJsonResponse) {

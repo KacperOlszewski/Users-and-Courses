@@ -1,4 +1,7 @@
-<h3 class="mdl-dialog__title">Add Candidates <mdl-spinner single-color active="{{isPending}}"></mdl-spinner></h3>
+<psp-header-component [loader]="isPending">
+    Add Candidates
+</psp-header-component>
+
 <div class="mdl-dialog__content">
     <mdl-list>
         <mdl-list-item *ngFor="let candidate of users" lines="1">

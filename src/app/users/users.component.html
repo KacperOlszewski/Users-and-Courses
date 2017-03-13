@@ -1,6 +1,6 @@
-<h2>
-    Users <mdl-spinner single-color active="{{isPending}}"></mdl-spinner>
-</h2>
+<psp-header-component [loader]="isPending">
+    Users
+</psp-header-component>
 
 <mdl-list>
     <mdl-list-item *ngFor="let user of users" lines="2">
@@ -28,9 +28,11 @@
     </mdl-list-item>
 </mdl-list>
 
-<button mdl-button
-        mdl-button-type="raised"
-        mdl-colored="primary"
-        mdl-ripple (click)="createUser($event)">
-    Create User
-</button>
+<div class="buttons">
+    <button mdl-button
+            mdl-button-type="raised"
+            mdl-colored="primary"
+            mdl-ripple (click)="createUser($event)">
+        Create User
+    </button>
+</div>

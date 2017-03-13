@@ -2,9 +2,12 @@
     <a *ngFor="let link of routes"
        class="mdl-navigation__link"
        routerLink="{{link.path}}"
-       routerLinkActive="active">
+       routerLinkActive="active"
+       (click)="mdl.closeDrawer()">
+
         <span  mdl-ripple>
             {{link.path}}
         </span>
+
     </a>
 </nav>

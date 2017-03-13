@@ -1,5 +1,5 @@
 <section mdl-shadow="2">
-    <mdl-layout mdl-layout-fixed-header mdl-layout-header-seamed>
+    <mdl-layout #mdlLayout="mdlLayout">
         <mdl-layout-header>
             <mdl-layout-header-row>
                 <mdl-layout-title>Navigate</mdl-layout-title>
@@ -7,7 +7,7 @@
         </mdl-layout-header>
         <mdl-layout-drawer>
             <mdl-layout-title>Menu</mdl-layout-title>
-            <psp-nav-component></psp-nav-component>
+            <psp-nav-component [mdl]="mdlLayout"></psp-nav-component>
         </mdl-layout-drawer>
         <mdl-layout-content>
             <router-outlet></router-outlet>

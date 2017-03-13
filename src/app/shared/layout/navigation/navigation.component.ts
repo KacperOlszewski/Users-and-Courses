@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Routes } from '@angular/router';
+import { MdlLayoutComponent } from 'angular2-mdl';
 
 import { routes } from '../../../app.routes';
 
@@ -9,5 +10,6 @@ import { routes } from '../../../app.routes';
     styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent {
+    @Input() mdl: MdlLayoutComponent;
     public routes: Routes = routes.slice(1);
 }

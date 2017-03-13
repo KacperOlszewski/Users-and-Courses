@@ -8,7 +8,7 @@ import { CoursesComponent } from './courses.component';
 import { CoursesService } from './courses.service';
 import { RemoveUserFromCandidatesList } from "./remove-user-from-candidates-list/remove-user-from-candidates-list.component";
 import { RegisterUserFromUserList } from "./register-user-from-user-list/register-user-from-user-list.component";
-import {NotificationModule} from "../shared/layout/notification/notification.module";
+import { LayoutModule } from '../shared/layout/layout.module';
 
 @NgModule({
     imports: [
@@ -16,7 +16,7 @@ import {NotificationModule} from "../shared/layout/notification/notification.mod
         CommonModule,
         CoursesRoutingModule,
         MdlModule,
-        NotificationModule
+        LayoutModule
     ],
     declarations: [
         CoursesComponent,

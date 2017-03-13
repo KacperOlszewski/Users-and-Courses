@@ -1,6 +1,6 @@
-<h2>
-    Courses <mdl-spinner single-color active="{{isPending}}"></mdl-spinner>
-</h2>
+<psp-header-component [loader]="isPending">
+    Courses
+</psp-header-component>
 
 <mdl-list>
     <mdl-list-item *ngFor="let course of courses" lines="2">
@@ -9,8 +9,8 @@
             <section>
                 <mdl-icon mdl-list-item-avatar>videocam</mdl-icon>
                 <span>
-                {{course.title}}
-            </span>
+                    {{course.title}}
+                </span>
                 <mdl-list-item-sub-title>
                     <p>Begin: {{course.begin | date}}, End: {{course.end | date}}</p>
                 </mdl-list-item-sub-title>
@@ -40,9 +40,11 @@
     </mdl-list-item>
 </mdl-list>
 
-<button mdl-button
-        mdl-button-type="raised"
-        mdl-colored="primary"
-        mdl-ripple>
-    Create Course
-</button>
+<div class="buttons">
+    <button mdl-button
+            mdl-button-type="raised"
+            mdl-colored="primary"
+            mdl-ripple>
+        Create Course
+    </button>
+</div>

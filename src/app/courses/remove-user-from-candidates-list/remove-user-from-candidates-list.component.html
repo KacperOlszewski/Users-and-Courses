@@ -1,4 +1,7 @@
-<h3 class="mdl-dialog__title">Remove candidates from course <mdl-spinner single-color active="{{isPending}}"></mdl-spinner></h3>
+<psp-header-component [loader]="isPending">
+    Remove Candidates
+</psp-header-component>
+
 <div class="mdl-dialog__content">
     <mdl-list>
         <mdl-list-item *ngFor="let candidate of course.candidates" lines="1">

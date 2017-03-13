@@ -1,6 +1,8 @@
-<form [formGroup]="userForm">
-    <h3 class="mdl-dialog__title">Create User <mdl-spinner single-color active="{{isPending}}"></mdl-spinner></h3>
+<psp-header-component [loader]="isPending">
+    Create User
+</psp-header-component>
 
+<form [formGroup]="userForm">
     <div class="mdl-dialog__content">
         <p class="form-control-wrapper">
             <mdl-textfield
