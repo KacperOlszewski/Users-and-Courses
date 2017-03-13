@@ -11,8 +11,7 @@
                     label="First name"
                     floating-label
                     disableNativeValidityChecking
-                    [class.is-invalid]="detectTouchedAndInvalid('first_name')"
-                    error-msg="{{detectTouchedAndInvalid ? requiredErrorMessage : ''}}">
+                    error-msg="{{detectTouchedAndInvalid('first_name') ? requiredErrorMessage : ''}}">
             </mdl-textfield>
 
             <mdl-icon *ngIf="detectTouchedAndValid('first_name')" class="icon-small icon-success form-control-right-icon">check_circle</mdl-icon>
@@ -26,8 +25,7 @@
                     label="Last name"
                     floating-label
                     disableNativeValidityChecking
-                    [class.is-invalid]="detectTouchedAndInvalid('last_name')"
-                    error-msg="{{detectTouchedAndInvalid ? requiredErrorMessage : ''}}">
+                    error-msg="{{detectTouchedAndInvalid('last_name') ? requiredErrorMessage : ''}}">
             </mdl-textfield>
 
             <mdl-icon *ngIf="detectTouchedAndValid('last_name')" class="icon-small icon-success form-control-right-icon">check_circle</mdl-icon>
@@ -38,7 +36,6 @@
             <mdl-radio
                     value="{{userGender.male}}"
                     formControlName="gender"
-                    name="gender"
                     class="form-control-radio"
                     mdl-ripple>
                 Male
@@ -46,7 +43,6 @@
             <mdl-radio
                     value="{{userGender.female}}"
                     formControlName="gender"
-                    name="gender"
                     class="form-control-radio"
                     mdl-ripple>
                 Female

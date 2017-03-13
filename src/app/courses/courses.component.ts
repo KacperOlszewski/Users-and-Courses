@@ -3,9 +3,9 @@ import { CoursesService } from './courses.service';
 import { CourseInterface } from './courses.interface';
 import { UserInterface } from "../users/users.interface";
 import { MdlDialogService } from 'angular2-mdl';
-import { RemoveUserFromCandidatesList } from "./remove-user-from-candidates-list/remove-user-from-candidates-list.component";
-import { RegisterUserFromUserList } from "./register-user-from-user-list/register-user-from-user-list.component";
-import {UsersService} from "../users/users.service";
+import { RemoveUserFromCandidatesList } from './remove-user-from-candidates-list/remove-user-from-candidates-list.component';
+import { RegisterUserFromUserList } from './register-user-from-user-list/register-user-from-user-list.component';
+import { UsersService } from '../users/users.service';
 
 type DialogType = 'add' | 'remove';
 

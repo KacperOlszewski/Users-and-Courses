@@ -31,3 +31,7 @@ $color-accent-contrast: $color-dark-contrast;
 .icon-error {
   color: red;
 }
+.icon-error, .icon-success {
+  vertical-align: top;
+  padding: 20px 4px;
+}

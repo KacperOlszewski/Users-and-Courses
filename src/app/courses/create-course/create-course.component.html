@@ -1,0 +1,83 @@
+<psp-header-component [loader]="isPending">
+    Create Course
+</psp-header-component>
+
+<section class="create-course">
+    <form [formGroup]="courseForm">
+        <p class="form-control-wrapper">
+            <mdl-textfield
+                    formControlName="title"
+                    type="text"
+                    label="Title"
+                    floating-label
+                    autofocus
+                    disableNativeValidityChecking
+                    [class.is-invalid]="detectTouchedAndInvalid('title')"
+                    error-msg="{{detectTouchedAndInvalid ? requiredErrorMessage : ''}}">
+            </mdl-textfield>
+
+            <mdl-icon *ngIf="detectTouchedAndValid('title')" class="icon-small icon-success form-control-right-icon">check_circle</mdl-icon>
+            <mdl-icon *ngIf="detectTouchedAndInvalid('title')" class="icon-small icon-error form-control-right-icon">warning</mdl-icon>
+        </p>
+
+        <p class="form-control-wrapper">
+            <mdl-textfield
+                    formControlName="begin"
+                    type="date"
+                    pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+                    label="begin date"
+                    floating-label
+                    disableNativeValidityChecking
+                    [class.is-invalid]="detectTouchedAndInvalid('begin')"
+                    error-msg="{{displayErrorMessage(properDateErrorMessage, 'begin', 'dateFormat', 'required')}}">
+            </mdl-textfield>
+
+            <mdl-icon *ngIf="detectTouchedAndValid('begin')" class="icon-small icon-success form-control-right-icon">check_circle</mdl-icon>
+            <mdl-icon *ngIf="detectTouchedAndInvalid('begin')" class="icon-small icon-error form-control-right-icon">warning</mdl-icon>
+        </p>
+
+        <p class="form-control-wrapper">
+            <mdl-textfield
+                    formControlName="end"
+                    type="date"
+                    pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+                    label="end date"
+                    floating-label
+                    disableNativeValidityChecking
+                    [class.is-invalid]="detectTouchedAndInvalid('end')"
+                    error-msg="{{displayErrorMessage(properDateErrorMessage, 'end', 'dateFormat', 'required')}}">
+            </mdl-textfield>
+
+            <mdl-icon *ngIf="detectTouchedAndValid('end')" class="icon-small icon-success form-control-right-icon">check_circle</mdl-icon>
+            <mdl-icon *ngIf="detectTouchedAndInvalid('end')" class="icon-small icon-error form-control-right-icon">warning</mdl-icon>
+        </p>
+
+        <p class="form-control-wrapper">
+            <mdl-textfield
+                    formControlName="candidate_limit"
+                    type="number"
+                    label="candidate limit"
+                    floating-label
+                    disableNativeValidityChecking
+                    [class.is-invalid]="detectTouchedAndInvalid('candidate_limit')"
+                    error-msg="{{detectTouchedAndInvalid ? requiredErrorMessage : ''}}">
+            </mdl-textfield>
+
+            <mdl-icon *ngIf="detectTouchedAndValid('candidate_limit')" class="icon-small icon-success form-control-right-icon">check_circle</mdl-icon>
+            <mdl-icon *ngIf="detectTouchedAndInvalid('candidate_limit')" class="icon-small icon-error form-control-right-icon">warning</mdl-icon>
+        </p>
+
+        <div>
+            <button
+                    mdl-button mdl-button-type="raised"
+                    mdl-colored="primary"
+                    (click)="submitChanges()"
+                    [disabled]="!courseForm.valid || isPending">
+                    <span>
+                        Save
+                    </span>
+            </button>
+            <psp-notification [notification]="notification"></psp-notification>
+        </div>
+    </form>
+</section>
