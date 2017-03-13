@@ -23,9 +23,9 @@
         <p class="form-control-wrapper">
             <mdl-textfield
                     formControlName="begin"
-                    type="date"
+                    type="text"
                     pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
-                    label="begin date"
+                    label="begin date (yyyy-mm-dd)"
                     floating-label
                     disableNativeValidityChecking
                     [class.is-invalid]="detectTouchedAndInvalid('begin')"
@@ -39,9 +39,9 @@
         <p class="form-control-wrapper">
             <mdl-textfield
                     formControlName="end"
-                    type="date"
+                    type="text"
                     pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
-                    label="end date"
+                    label="end date (yyyy-mm-dd)"
                     floating-label
                     disableNativeValidityChecking
                     [class.is-invalid]="detectTouchedAndInvalid('end')"

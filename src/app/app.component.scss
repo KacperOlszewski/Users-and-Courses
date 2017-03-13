@@ -20,6 +20,11 @@ $color-accent-contrast: $color-dark-contrast;
   }
 }
 
+.mdl-list__item {
+  background-color: aliceblue;
+  margin: 5px 0;
+}
+
 .buttons {
   padding: 24px 18px 16px;
 }
