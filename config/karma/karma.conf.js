@@ -43,6 +43,8 @@ module.exports = function(config) {
 
     browsers: ['PhantomJS'],
 
-    singleRun: true
+    singleRun: true,
+
+    logLevel: config.LOG_INFO
   });
 };

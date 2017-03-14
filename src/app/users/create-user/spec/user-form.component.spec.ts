@@ -10,7 +10,10 @@ describe('Component: UserFormComponent', () => {
                     get: jasmine.createSpy('get').and.callFake(() => {
                         return {
                             setValidators: jasmine.createSpy('setValidators'),
-                            setErrors: jasmine.createSpy('setValidators')
+                            setErrors: jasmine.createSpy('setValidators'),
+                            touched: true,
+                            valid: true,
+                            invalid: false
                         };
                     }),
                     value: {formValuesMock: 'mocks'},
@@ -18,7 +21,9 @@ describe('Component: UserFormComponent', () => {
                 };
             }
         };
-        this.dialogService = {};
+        this.dialogService = {
+            hide: () => {}
+        };
         this.providedUser = null;
         this.UserFormComponentInstance = new UserFormComponent(
             this.userService,
@@ -59,6 +64,69 @@ describe('Component: UserFormComponent', () => {
 
             expect(this.UserFormComponentInstance.isPending).toBe(true);
             expect(this.userService.updateUser).toHaveBeenCalledWith({formValuesMock: 'mocks', id: this.UserFormComponentInstance.userToEdit.id});
+        });
+
+        it('on success expect to set notification, reset form, and hide dialog + pending to false', (done) => {
+            const createUserSubscribeMock = jasmine.createSpyObj('createUser', ['subscribe']);
+            const addMock = jasmine.createSpy('add');
+
+            this.userService.createUser = jasmine.createSpy('create');
+            this.userService.createUser.and.returnValue(createUserSubscribeMock);
+            this.dialogService.hide = jasmine.createSpy('hide');
+
+            createUserSubscribeMock.subscribe.and.callFake((cb: Function) => {
+                cb();
+                return {add: addMock};
+            });
+            addMock.and.callFake((cb: Function) => {
+                cb();
+            });
+
+            this.UserFormComponentInstance.submitChanges();
+
+            expect(this.UserFormComponentInstance.isPending).toBe(false);
+            expect(this.UserFormComponentInstance.notification).toBe('success');
+            expect(this.UserFormComponentInstance.userForm.reset).toHaveBeenCalled();
+
+            setTimeout(() => {
+                expect(this.dialogService.hide).toHaveBeenCalled();
+                done();
+            }, 1500);
+        });
+
+        it('on error expect to set notification + pending to false', () => {
+            const createUserSubscribeMock = jasmine.createSpyObj('createUser', ['subscribe']);
+            const addMock = jasmine.createSpy('add');
+            const errorMock = {status: 'error'};
+
+            this.userService.createUser = jasmine.createSpy('create');
+            this.userService.createUser.and.returnValue(createUserSubscribeMock);
+
+            createUserSubscribeMock.subscribe.and.callFake((cb: Function, errCb: Function) => {
+                errCb(errorMock);
+                return {add: addMock};
+            });
+            addMock.and.callFake((cb: Function) => {
+                cb();
+            });
+
+            this.UserFormComponentInstance.submitChanges();
+
+            expect(this.UserFormComponentInstance.isPending).toBe(false);
+            expect(this.UserFormComponentInstance.notification).toBe(errorMock.status);
+            expect(this.UserFormComponentInstance.userForm.reset).not.toHaveBeenCalled();
+        });
+    });
+
+    describe('detectTouchedAndValid', () => {
+        it('should return true', () => {
+            expect(this.UserFormComponentInstance.detectTouchedAndValid('first_name')).toBe(true);
+        });
+    });
+
+    describe('detectTouchedAndInvalid', () => {
+        it('should return true', () => {
+            expect(this.UserFormComponentInstance.detectTouchedAndInvalid('last_name')).toBe(false);
         });
     });
 });
