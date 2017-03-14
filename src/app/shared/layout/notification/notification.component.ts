@@ -11,8 +11,6 @@ export class NotificationComponent implements OnChanges {
     @Input() public notification: string;
     public notificationMsg: string;
 
-    constructor() {}
-
     ngOnChanges() {
         if (this.notification === HttpStatusGroup.SUCCESS) {
             this.notificationMsg = "Success!"

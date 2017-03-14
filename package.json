@@ -6,6 +6,7 @@
     "build": "webpack --progress",
     "build:prod": "NODE_ENV='prod' webpack -p --progress",
     "serve": "webpack-dev-server --inline",
+    "demo": "NODE_ENV='demo' webpack-dev-server --inline --progress",
     "test": "karma start karma.conf.js"
   },
   "licenses": [
