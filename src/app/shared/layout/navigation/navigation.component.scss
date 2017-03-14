@@ -1,8 +1,10 @@
+@import '../../../assets/scss/colors';
+
 .psp-navigation {
   .mdl-navigation__link {
     &.active {
-      background-color: rgb(33,150,243);
-      color: #fff;
+      background-color: $success-color;
+      color: $white-color;
     }
   }
 }

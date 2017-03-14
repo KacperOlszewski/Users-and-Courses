@@ -1,9 +1,11 @@
+@import '../../../assets/scss/colors';
+
 p {
   display: inline-block;
   margin: 0 12px;
-  color: red;
+  color: $error-color;
 
   &.success {
-    color: forestgreen;
+    color: $success-green-color;
   }
 }

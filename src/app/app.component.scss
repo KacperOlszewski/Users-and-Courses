@@ -7,6 +7,7 @@ $color-primary-contrast: $color-dark-contrast;
 $color-accent-contrast: $color-dark-contrast;
 
 @import '~angular2-mdl/scss/material-design-lite';
+@import './assets/scss/colors';
 
 .mdl-list__item .mdl-list__item-secondary-content {
   flex-flow: row;
@@ -21,7 +22,7 @@ $color-accent-contrast: $color-dark-contrast;
 }
 
 .mdl-list__item {
-  background-color: aliceblue;
+  background-color: $light-blue-color;
   margin: 5px 0;
 }
 
@@ -30,11 +31,11 @@ $color-accent-contrast: $color-dark-contrast;
 }
 
 .icon-success {
-  color: rgb(33,150,243);
+  color: $success-color
 }
 
 .icon-error {
-  color: red;
+  color: $error-color
 }
 .icon-error, .icon-success {
   vertical-align: top;
