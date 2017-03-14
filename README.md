@@ -1,3 +1,7 @@
+Technologies: Angular2, Typescript, webpack, Jasmine, angular2-mdl
+--------------
+
+
 Requirements
 ==============
 node >= 6.1.0
