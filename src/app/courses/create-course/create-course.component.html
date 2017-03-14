@@ -10,7 +10,6 @@
                     type="text"
                     label="Title"
                     floating-label
-                    autofocus
                     disableNativeValidityChecking
                     [class.is-invalid]="detectTouchedAndInvalid('title')"
                     error-msg="{{detectTouchedAndInvalid ? requiredErrorMessage : ''}}">

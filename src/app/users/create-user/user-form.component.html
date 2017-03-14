@@ -11,6 +11,7 @@
                     label="First name"
                     floating-label
                     disableNativeValidityChecking
+                    [class.is-invalid]="detectTouchedAndInvalid('first_name')"
                     error-msg="{{detectTouchedAndInvalid('first_name') ? requiredErrorMessage : ''}}">
             </mdl-textfield>
 
@@ -25,6 +26,7 @@
                     label="Last name"
                     floating-label
                     disableNativeValidityChecking
+                    [class.is-invalid]="detectTouchedAndInvalid('last_name')"
                     error-msg="{{detectTouchedAndInvalid('last_name') ? requiredErrorMessage : ''}}">
             </mdl-textfield>
 

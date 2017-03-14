@@ -7,8 +7,7 @@ import { FormBuilder } from '@angular/forms';
 
 @Component({
     selector: 'psp-users',
-    templateUrl: './users.component.html',
-    styleUrls: ['./users.scss']
+    templateUrl: './users.component.html'
 })
 export class UsersComponent implements OnInit {
 
@@ -27,7 +26,7 @@ export class UsersComponent implements OnInit {
                     this.users = users;
                 },
                 (err) => {
-                    console.log(err)
+                    console.log(err);
                 }
             )
             .add(() => {

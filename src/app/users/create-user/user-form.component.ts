@@ -1,16 +1,16 @@
-import {Component, Inject, ViewContainerRef} from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MdlDialogReference, IMdlCustomDialog } from 'angular2-mdl';
+import { MdlDialogReference } from 'angular2-mdl';
 
 import { UsersService } from '../users.service';
 import { UserInterface } from '../users.interface';
-import {HttpJsonResponse} from "../../shared/utils/http.helpers";
+import { HttpJsonResponse } from '../../shared/utils/http.helpers';
 
 @Component({
     selector: 'psp-user-form',
     templateUrl: './user-form.component.html',
 })
-export class UserFormComponent implements IMdlCustomDialog {
+export class UserFormComponent {
 
     public userForm: FormGroup;
     public isPending = false;
@@ -26,14 +26,9 @@ export class UserFormComponent implements IMdlCustomDialog {
         private userService: UsersService,
         private formBuilder: FormBuilder,
         private dialog: MdlDialogReference,
-        private vcRef: ViewContainerRef,
-        @Inject('UserToEdit') private userToEdit: UserInterface
+        @Inject('UserToEdit') public userToEdit: UserInterface
     ) {
         this.setFormValidation(this.userToEdit);
-    }
-
-    get viewContainerRef() {
-        return this.vcRef;
     }
 
     submitChanges() {

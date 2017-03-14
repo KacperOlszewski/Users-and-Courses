@@ -76,8 +76,8 @@ export class CoursesComponent {
             isModal: true,
             styles: {'width': '500px'},
             clickOutsideToClose: true,
-            enterTransitionDuration: 400,
-            leaveTransitionDuration: 400
+            enterTransitionDuration: 300,
+            leaveTransitionDuration: 300
         });
     }
 }
